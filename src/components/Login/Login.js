@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Login.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faG } from '@fortawesome/free-solid-svg-icons';
 import auth from '../../firebase.init';
@@ -17,6 +17,8 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     //
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
 
     const handleEmailBlure = event => {
@@ -27,7 +29,7 @@ const Login = () => {
     }
 
     if (user) {
-        navigate('/shop');
+        navigate(from, {replace:true});
     }
 
     const handleUseSignIn = event => {
