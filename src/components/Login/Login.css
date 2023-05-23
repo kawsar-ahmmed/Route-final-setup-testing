@@ -1,0 +1,82 @@
+.form-contianer {
+    width: 600px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.form-title h3 {
+    font-size: 26px;
+    color: black;
+    font-weight: 400;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.input-group input {
+    width: 400px;
+    height: 55px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px;
+    padding-left: 15px;
+}
+
+.submit-button {
+    margin-top: 40px;
+}
+
+.submit-button input {
+    background: rgba(255, 153, 0, 0.3);
+    border-radius: 5px;
+    width: 415px;
+    height: 55px;
+    border: none;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.submit-button input:hover {
+    background: rgba(255, 153, 0, 0.677);
+    color: #fff;
+
+}
+.usr-text p {
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 15px;
+    color: #2A414F;
+    text-align: center;
+}
+
+.usr-text p a {
+    color: orange;
+    font-weight: bold;
+}
+
+.google-login button {
+    width: 416px;
+    height: 55px;
+    font-size: 17px;
+    margin-bottom: 50px;
+    margin-top: 30px;
+    background: transparent;
+    border-radius: 5px;
+    cursor: pointer
+}
+
+.google-login button icon {
+    color: blue;
+}
