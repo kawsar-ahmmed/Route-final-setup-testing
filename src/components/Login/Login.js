@@ -1,26 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faG } from '@fortawesome/free-solid-svg-icons';
+import auth from '../../firebase.init';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 const Login = () => {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    // 
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
+    //
+    const navigate = useNavigate();
+
+    const handleEmailBlure = event => {
+        setEmail(event.target.value)
+    }
+    const handlePasswordBlure = event => {
+        setPassword(event.target.value)
+    }
+
+    if (user) {
+        navigate('/shop');
+    }
+
+    const handleUseSignIn = event => {
+        event.preventDefault()
+        signInWithEmailAndPassword(email, password)
+    }
+    // const handleLoginUser = event => {
+
+    // }
     return (
         <div className='form-contianer'>
             <div className="form-main">
                 <div className="form-title">
                     <h3>Login</h3>
                 </div>
-                <form>
+                <form onSubmit={handleUseSignIn}>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" name="email" id="" required />
+                        <input onBlur={handleEmailBlure} type="email" name="email" id="" required />
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="" required />
+                        <input onBlur={handlePasswordBlure} type="password" name="password" id="" required />
                     </div>
+                    <p style={{ 'color': 'red' }}>{error?.message}</p>
+                    {
+                        loading && <p>Loading...</p>
+                    }
                     <div className="submit-button">
-                        <input type="submit" value="Login" required />
+                        <input onChange={handleUseSignIn} type="submit" value="Login" required />
                     </div>
                     <div className="usr-text">
                         <p>
